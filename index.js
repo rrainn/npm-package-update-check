@@ -25,7 +25,7 @@ let dependencyKeys = Object.keys(pjson.dependencies).concat(Object.keys(pjson.de
 let dependencyValues = Object.values(pjson.dependencies).concat(Object.values(pjson.devDependencies));
 dependencyKeys.forEach((dependencyKey, index) => {
 	latestVersion(dependencyKey).then(version => {
-		if (version != dependencyValues[index]) {
+		if (version != dependencyValues[index] && !dependencyValues[index].includes("github:") && !dependencyValues[index].includes("/")) {
 			console.log(dependencyKey + " - v" + version);
 		}
 	});
