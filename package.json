@@ -1,0 +1,23 @@
+{
+  "name": "npm-package-update-check",
+  "version": "1.0.0",
+  "description": "📦 NPM Package - Allows you to view which NPM packages need to be updated in your package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrainn/npm-package-update-check.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrainn/npm-package-update-check/issues"
+  },
+  "homepage": "https://github.com/rrainn/npm-package-update-check#readme",
+  "dependencies": {
+    "latest-version": "^3.1.0"
+  }
+}
