@@ -26,7 +26,7 @@ let dependencyValues = Object.values(pjson.dependencies).concat(Object.values(pj
 dependencyKeys.forEach((dependencyKey, index) => {
 	latestVersion(dependencyKey).then(version => {
 		if (version != dependencyValues[index]) {
-			console.log(dependencyKey + " - " + version);
+			console.log(dependencyKey + " - v" + version);
 		}
 	});
 });
