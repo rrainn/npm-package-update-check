@@ -1,2 +1,5 @@
 # npm-package-update-check
-📦 NPM Package - Allows you to view which NPM packages need to be updated in your package.json
+
+1. `npm install -g npm-package-update-check`
+2. Navigate to project directory
+3. `versioncheck`
