@@ -1,7 +1,7 @@
 {
   "name": "npm-package-update-check",
   "version": "1.0.0",
-  "description": "📦 NPM Package - Allows you to view which NPM packages need to be updated in your package.json",
+  "description": "Allows you to view which NPM packages need to be updated in your package.json",
   "main": "index.js",
   "bin": {
     "versioncheck": "index.js"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/rrainn/npm-package-update-check.git"
   },
-  "keywords": [],
+  "keywords": ["npm", "packages", "update", "check"],
   "author": "rrainn, Inc.",
   "license": "MIT License",
   "bugs": {
