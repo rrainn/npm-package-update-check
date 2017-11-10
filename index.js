@@ -23,15 +23,31 @@ const pjson = require(path.join(process.cwd(), 'package.json'));
 
 let dependencyKeys = Object.keys(pjson.dependencies).concat(Object.keys(pjson.devDependencies));
 let dependencyValues = Object.values(pjson.dependencies).concat(Object.values(pjson.devDependencies));
+
+let packagesPromises = [];
+
 dependencyKeys.forEach((dependencyKey, index) => {
-	latestVersion(dependencyKey).then(version => {
-		if (version != dependencyValues[index] && !dependencyValues[index].includes("github:") && !dependencyValues[index].includes("/")) {
-			console.log(dependencyKey + " - v" + version);
-		}
-	});
+	packagesPromises.push(new Promise(function(resolve, reject) {
+		let myIndex = index;
+		latestVersion(dependencyKey).then(version => {
+			if (version != dependencyValues[myIndex] && !dependencyValues[myIndex].includes("github:") && !dependencyValues[myIndex].includes("/")) {
+				resolve({package: dependencyKey, version: version});
+			}
+			resolve(null);
+		});
+	}));
 });
 
-
+async function handleVersions() {
+	let updates = await Promise.all(packagesPromises);
+	dependencyKeys.forEach((key, index) => {
+		let thePackage = updates.find((mypackage) => (mypackage || {package: ""}).package == key);
+		if (thePackage) {
+			console.log(thePackage.package + " - v" + thePackage.version);
+		}
+	});
+}
+handleVersions();
 
 function allElementsAfter(keyword, array) {
 	let pastValue = false;
