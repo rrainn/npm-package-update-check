@@ -3,6 +3,10 @@
 const path = require('path');
 const latestVersion = require('latest-version');
 
+const argvs = process.argv;
+const parsedParams = allElementsAfter("versioncheck", argvs); // ex. ['versioncheck', '-v']
+const keyword = parsedParams[1]; // ex. '-v'
+
 if (keyword == "-v" || keyword == "--version" || keyword == "version") {
 	const mypackagejson = require('./package.json');
 	console.log("v" + mypackagejson.version);
@@ -27,4 +31,18 @@ dependencyKeys.forEach((dependencyKey, index) => {
 	});
 });
 
-process.exit();
+
+
+function allElementsAfter(keyword, array) {
+	let pastValue = false;
+	let newArray = [];
+	array.forEach(function (element) {
+		if (element.includes(keyword)) {
+			pastValue = true;
+		}
+		if (pastValue) {
+			newArray.push(element);
+		}
+	});
+	return newArray;
+}
